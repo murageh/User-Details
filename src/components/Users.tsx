@@ -5,6 +5,8 @@ import Table from "./Table";
 import customDateFormat from "./DateUtilities";
 import LoadingData from "./LoadingData";
 
+import {getSourceUrl} from '../resources/SourceData';
+
 const Users = () => {
 
     const [data, setData] = useState([]);
@@ -14,7 +16,7 @@ const Users = () => {
     useEffect(() => {
         (async () => {
             //URL to fetch data from goes here.
-            const result = await axios.get("url");
+            const result = await axios.get(getSourceUrl());
             setData(result.data);
             setDataLoaded(true);
         })();

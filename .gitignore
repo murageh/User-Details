@@ -19,6 +19,7 @@
 .env.production.local
 
 /.idea
+/src/resources/SourceData.js
 
 npm-debug.log*
 yarn-debug.log*

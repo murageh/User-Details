@@ -4,7 +4,7 @@ import "../styles/index.css";
 
 const Title = () => {
     return (
-        <h1>User Details</h1>
+        <h1 data-testid={'title'}>User Details</h1>
     )
 }
 

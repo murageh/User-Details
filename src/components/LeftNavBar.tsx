@@ -21,7 +21,7 @@ const LeftNavBar: React.FC = () => {
     }
 
     return (
-        <div className={"left-nav-bar"}>
+        <div className={"left-nav-bar"} data-testid={"left-nav"}>
             <MenuItem text={"Registered users"} action={showRegisteredUsers} selected={selected === 0}
                       setSelection={setSelected}/>
             <MenuItem text={"Active Users"} action={showActiveUsers} selected={selected === 1}

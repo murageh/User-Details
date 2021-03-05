@@ -53,8 +53,8 @@ const Table = ({columns, data}) => {
                 </tbody>
             </table>
             <div className={"bottom-nav"}>
-                <button onClick={() => previousPage()} className={"nav-button"}>Next Page</button>
-                <button onClick={() => nextPage()} className={"nav-button"}>Previous Page</button>
+                <button onClick={() => previousPage()} className={"nav-button"}>Previous Page</button>
+                <button onClick={() => nextPage()} className={"nav-button"}>Next Page</button>
             </div>
         </Fragment>
     )

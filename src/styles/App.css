@@ -63,6 +63,18 @@
 
 
 /***TABLE STYLING***/
+.filter-div {
+    width: 100%;
+    text-align: center;
+    padding: 0 0 10px 0;
+}
+
+.filter-div input {
+    padding: 1px;
+    border-radius: 5px;
+    border: 1px solid #ffff7755;
+}
+
 table {
     border-collapse: collapse;
     width: 100%;

@@ -48,7 +48,7 @@ describe.only("Does system render correctly?", () => {
 
             //test if the next and previous page buttons work
             fireEvent.click(screen.getByText(/Next Page/i))
-            expect(await screen.findAllByText("1")).toHaveLength(10);
+            expect(await screen.findAllByText("1")).toHaveLength(8);
             expect(await screen.queryByText("2840")).toBeNull();
 
             fireEvent.click(screen.getByText(/Previous Page/i))
@@ -57,14 +57,18 @@ describe.only("Does system render correctly?", () => {
 
             //Pagination tests
 
-            //check if 'Go to page XX' input works
+            //check if 'Go to page XX' input works.
             fireEvent.change(screen.getByTestId('go-to-page-x'), {target: {value: '5'}})
             const validationText = screen.getByTestId('page-x-of-y').textContent;
             expect(validationText).toContain('Page 5 of')
 
-            //check if the pageSize controller works
+            //check if the pageSize controller works. Expects all 25 entries
             fireEvent.change(screen.getByTestId('set-pagesize'), {target: {value: '25'}})
             expect(await screen.findAllByText("1")).toHaveLength(25);
+
+            //check if the search filter option works. Expects only 2 entries
+            fireEvent.change(screen.getByTestId('search-filter'), {target: {value: '4691'}})
+            expect(await screen.findAllByText("1")).toHaveLength(2);
 
             screen.debug();
         }, 60000 /*Large timeout to cater for slow network speeds during testing*/);

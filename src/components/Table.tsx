@@ -1,8 +1,9 @@
 import {Fragment} from "react";
 import {useGlobalFilter, usePagination, useSortBy, useTable} from "react-table";
 import "../styles/App.css";
-import BottomNavBar from "./BottomNavBar";
+
 import GlobalFilter from "./GlobalFilter";
+import BottomNavBar from "./BottomNavBar";
 
 
 const Table = ({columns, data}) => {

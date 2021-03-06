@@ -1,7 +1,8 @@
 import {Fragment} from "react";
-import {usePagination, useSortBy, useTable} from "react-table";
+import {useGlobalFilter, usePagination, useSortBy, useTable} from "react-table";
 import "../styles/App.css";
 import BottomNavBar from "./BottomNavBar";
+import GlobalFilter from "./GlobalFilter";
 
 
 const Table = ({columns, data}) => {
@@ -20,21 +21,24 @@ const Table = ({columns, data}) => {
         pageCount,
         setPageSize,
         state,
+        setGlobalFilter,
         prepareRow,
     } = useTable(
         {
             columns,
             data,
-            initialState: {pageIndex: 0}
+            initialState: {pageIndex: 0, pageSize: 8}
         },
-        useSortBy, usePagination
+        useGlobalFilter, useSortBy, usePagination
     );
 
-    const {pageIndex, pageSize} = state;
+    const {globalFilter, pageIndex, pageSize} = state;
 
     // Render the UI for your table
     return (
         <Fragment>
+            <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter}/>
+
             <table {...getTableProps()}>
                 <thead>
                 {headerGroups.map(headerGroup => (

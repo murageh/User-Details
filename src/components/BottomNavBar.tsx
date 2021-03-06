@@ -33,7 +33,7 @@ const BottomNavBar = (props: PaginationOptions) => {
                     props.setPageSize(Number(e.target.value))
                 }} data-testid={'set-pagesize'}>
                     {
-                        [10, 25, 50].map(pageSize => (
+                        [8, 10, 25, 50].map(pageSize => (
                             <option key={pageSize} value={pageSize}>
                                 Show {pageSize}
                             </option>

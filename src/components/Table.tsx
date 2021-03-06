@@ -1,6 +1,7 @@
 import {Fragment} from "react";
 import {usePagination, useSortBy, useTable} from "react-table";
 import "../styles/App.css";
+import BottomNavBar from "./BottomNavBar";
 
 
 const Table = ({columns, data}) => {
@@ -12,15 +13,24 @@ const Table = ({columns, data}) => {
         page,
         nextPage,
         previousPage,
+        canNextPage,
+        canPreviousPage,
+        pageOptions,
+        gotoPage,
+        pageCount,
+        setPageSize,
+        state,
         prepareRow,
-        state: {pageIndex, pageSize},
     } = useTable(
         {
             columns,
-            data
+            data,
+            initialState: {pageIndex: 0}
         },
         useSortBy, usePagination
     );
+
+    const {pageIndex, pageSize} = state;
 
     // Render the UI for your table
     return (
@@ -52,10 +62,17 @@ const Table = ({columns, data}) => {
                 })}
                 </tbody>
             </table>
-            <div className={"bottom-nav"}>
-                <button onClick={() => previousPage()} className={"nav-button"}>Previous Page</button>
-                <button onClick={() => nextPage()} className={"nav-button"}>Next Page</button>
-            </div>
+            <BottomNavBar
+                pageIndex={pageIndex}
+                pageOptions={pageOptions}
+                pageSize={pageSize}
+                pageCount={pageCount}
+                setPageSize={setPageSize}
+                gotoPage={gotoPage}
+                previousPage={previousPage}
+                nextPage={nextPage}
+                canPreviousPage={canPreviousPage}
+                canNextPage={canNextPage}/>
         </Fragment>
     )
 }
